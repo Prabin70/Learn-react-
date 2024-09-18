@@ -33,6 +33,18 @@ const ReadAllProduct = () => {
     } catch (error) {}
   };
 
+  let handleEdit = (id) => {
+    return () => {
+      navigate(`/product/update/${id}`);
+    };
+  };
+
+  let handleView = (id) => {
+    return () => {
+      navigate(`/product/view/${id}`);
+    };
+  };
+
   let alertToast = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -86,18 +98,14 @@ const ReadAllProduct = () => {
             <button
               type="submit"
               style={{ cursor: "pointer" }}
-              onClick={() => {
-                navigate(`/product/${item._id}`);
-              }}
+              onClick={handleView(item._id)}
             >
               View
             </button>
             <button
               type="submit"
               style={{ cursor: "pointer" }}
-              onClick={() => {
-                navigate(`/product/update/${item._id}`);
-              }}
+              onClick={handleEdit(item._id)}
             >
               Edit
             </button>

@@ -1,5 +1,6 @@
 import axios from "axios";
+import { baseUrl } from "../config/config";
 
 export const HitAPI = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: baseUrl,
 });

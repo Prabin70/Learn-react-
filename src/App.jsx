@@ -32,6 +32,10 @@ import LearnForm1 from "./LearnForm/LearnForm1";
 import Parent from "./PropDrilling/Parent";
 import GreatGrandChild from "./PropDrilling/GreatGrandChild";
 
+// const apiUrl = process.env.REACT_APP_BASE_URL;
+
+// console.log(apiUrl); // This will log the API URL
+
 export let Context = createContext();
 
 const App = () => {
