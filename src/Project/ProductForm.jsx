@@ -46,6 +46,13 @@ const ProductForm = ({
     onDrop,
     // multiple: true,
   });
+  // const formatDate = (isoString) => {
+  //   const date = new Date(isoString);
+  //   let year = date.getFullYear();
+  //   let month = (date.getMonth() + 1).toString().padStart(2, '0'); // Months are 0-based
+  //   let day = date.getDate().toString().padStart(2, '0');
+  //   return `${year}-${month}-${day}`;
+  // };
 
   useEffect(() => {
     if (Product && Object.keys(Product).length > 0) {
@@ -71,6 +78,13 @@ const ProductForm = ({
       Company,
     };
     onSubmit(formData);
+    // setName("");
+    // setQuantity("");
+    // setPrice("");
+    // setFeatures("");
+    // setManufactureDate("");
+    // setProductImage("");
+    // setcompany("");
   };
 
   return (
@@ -132,7 +146,7 @@ const ProductForm = ({
             style={{ margin: "10px" }}
           /> */}
 
-          <input {...getInputProps()}></input>
+          <input {...getInputProps()} />
           {isDragActive ? (
             <p>Drop the files here ...</p>
           ) : (
@@ -142,7 +156,7 @@ const ProductForm = ({
           {ProductImage ? (
             <img
               src={ProductImage}
-              style={{ height: "300px", width: "300px" }}
+              style={{ height: "300px", width: "auto" }}
               alt="product image"
             />
           ) : null}

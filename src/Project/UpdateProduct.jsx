@@ -215,12 +215,13 @@
 // export default UpdateProduct;
 
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { HitAPI } from "../Services/HitAPI";
 import ProductForm from "./ProductForm";
 
 const UpdateProduct = () => {
-  const [product, setProduct] = useState("");
+  const [product, setProduct] = useState({});
+  let nevigate = useNavigate();
   let params = useParams();
 
   let getData = async () => {
@@ -228,9 +229,9 @@ const UpdateProduct = () => {
       let result = await HitAPI({
         url: `/product/${params.id}`,
         method: "GET",
-        data: data,
       });
-      console.log(result);
+
+      setProduct(result.data.result);
     } catch (error) {}
   };
 
@@ -238,13 +239,16 @@ const UpdateProduct = () => {
     getData();
   }, []);
 
-  const onSubmit = async () => {
-    let result = await HitAPI({
-      url: `/${params.id}`,
-      method: "PATCH",
-      data: data,
-    });
-    console.log(result);
+  const onSubmit = async (prabin) => {
+    try {
+      let result = await HitAPI({
+        url: `/product/${params.id}`,
+        method: "PATCH",
+        data: prabin,
+      });
+      console.log(result);
+      // nevigate(`/product/${params.id}`);
+    } catch (error) {}
   };
   return (
     <div>
