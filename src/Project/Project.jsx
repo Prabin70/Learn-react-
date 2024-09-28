@@ -1,11 +1,13 @@
 import React from "react";
-import NavBar from "./NavBar";
 import { Outlet, Route, Routes } from "react-router-dom";
 import Create from "./Create";
-import ReadAllProduct from "./ReadAllProduct";
 import Footer from "./Footer";
-import SpecficData from "./SpecficData";
+import NavBar from "./NavBar";
+import ReadAllProductUsingRTK from "./ReadAllProductUsingRTK";
+import ReadSpeificProductRTK from "./ReadSpecificProductRTK";
 import UpdateProduct from "./UpdateProduct";
+import CreateProductUsingRTK from "./CreateProductUsingRTK";
+import ProductUpdateUsingRTK from "./ProductUpdateUsingRTK";
 
 const Project = () => {
   return (
@@ -19,12 +21,18 @@ const Project = () => {
             </div>
           }
         >
-          <Route index element={<div>Welcome to Project Page</div>}></Route>
+          <Route index element={<div>Welcome to Project Page</div>} />
           <Route path="product" element={<Outlet />}>
-            <Route index element={<ReadAllProduct />}></Route>
-            <Route path="create" element={<Create />}></Route>
-            <Route path=":id" element={<SpecficData />}></Route>
-            <Route path="update/:id" element={<UpdateProduct />}></Route>
+            {/* <Route index element={<ReadAllProduct />}></Route> */}
+            <Route index element={<ReadAllProductUsingRTK />} />
+            {/* <Route path="create" element={<Create />} /> */}
+
+            <Route path="create" element={<CreateProductUsingRTK />} />
+            {/* <Route path=":id" element={<SpecficData />} /> */}
+            <Route path=":id" element={<ReadSpeificProductRTK />} />
+
+            <Route path="update/:id" element={<ProductUpdateUsingRTK />} />
+            {/* <Route path="update/:id" element={<UpdateProduct />} /> */}
           </Route>
         </Route>
       </Routes>

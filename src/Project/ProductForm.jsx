@@ -6,6 +6,7 @@ const ProductForm = ({
   buttonName = "",
   onSubmit = () => {},
   Product = {},
+  isLoading = false,
 }) => {
   let [Name, setName] = useState(Product?.Name || "");
   let [Quantity, setQuantity] = useState(Product?.Quantity || "");
@@ -27,19 +28,21 @@ const ProductForm = ({
 
   const onDrop = useCallback(async (acceptedFiles) => {
     // Do something with the files
-
     let fileData = acceptedFiles[0];
     let data = new FormData();
-    data.append("document", fileData);
+    data.append("document", fileData); // Check if the server expects 'document' as the key
+
     try {
       let result = await HitAPI({
         url: `/file/single`,
         method: "POST",
         data: data,
       });
-      console.log(result);
-      setProductImage(URL.createObjectURL(fileData));
-    } catch (error) {}
+      console.log(result); // Log the result for debugging purposes
+      setProductImage(result.data.result); // Assuming result.data.result contains the image URL
+    } catch (error) {
+      console.error("File upload failed:", error); // Log the error for better debugging
+    }
   }, []);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
@@ -198,7 +201,7 @@ const ProductForm = ({
           </select>
         </div>
         <button type="submit" style={{ margin: "10px" }}>
-          {buttonName}
+          {isLoading ? "Creating..." : buttonName}
         </button>
       </form>
     </div>
