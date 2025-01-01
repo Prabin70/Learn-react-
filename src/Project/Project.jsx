@@ -8,6 +8,7 @@ import ReadSpeificProductRTK from "./ReadSpecificProductRTK";
 import UpdateProduct from "./UpdateProduct";
 import CreateProductUsingRTK from "./CreateProductUsingRTK";
 import ProductUpdateUsingRTK from "./ProductUpdateUsingRTK";
+import UseState5 from "../LearnUseState/UseState5";
 
 const Project = () => {
   return (
@@ -33,6 +34,7 @@ const Project = () => {
 
             <Route path="update/:id" element={<ProductUpdateUsingRTK />} />
             {/* <Route path="update/:id" element={<UpdateProduct />} /> */}
+            <Route path="passowrd" element={<UseState5 />}></Route>
           </Route>
         </Route>
       </Routes>

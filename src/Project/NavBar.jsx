@@ -10,7 +10,7 @@ const NavBar = () => {
         padding: "20px",
       }}
     >
-      {" "}
+      
       <NavLink
         style={{ padding: "10px", textDecoration: "none", color: "#fff" }}
         to={"/product"}

@@ -20,7 +20,7 @@
 //   ];
 
 //   const onDrop = useCallback(async (acceptedFiles) => {
-//     // Do something with the files
+//      Do something with the files
 
 //     let fileData = acceptedFiles[0];
 //     let data = new FormData();
